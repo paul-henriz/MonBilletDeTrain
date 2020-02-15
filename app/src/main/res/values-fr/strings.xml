@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MonBilletDeTrain!</string>
+    <string name="btn_add_journey">Ajouter un voyage</string>
+    <string name="btn_list_journey">Voir vos prochains voyages</string>
+    <string name="menu_about">À propos</string>
+    <string name="menu_preferences">Préférences</string>
+    <string name="pref_reduction_card">Carte de réduction</string>
+    <string name="pref_reduction_card_any">Aucune carte de réduction</string>
+    <string name="pref_reduction_card_sum">Sélectionner une carte de réduction</string>
+    <string name="pref_run_bg">Lancer en arrière-plan</string>
+    <string name="pref_run_bg_sum">Cocher pour vérifier automatiquement en arrière-plan</string>
+    <string name="pref_update_freq">Fréquence de rafraichissement</string>
+    <string name="pref_update_freq_sum">Sélectionner la période</string>
+</resources>

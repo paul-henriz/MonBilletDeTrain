@@ -1,0 +1,30 @@
+<resources>
+    <string-array name="pref_reduction_card_values">
+        <item>ANY</item>
+        <item>YOUNG_CARD</item>
+        <item>SENIOR_CARD</item>
+        <item>FAMILY_CARD</item>
+    </string-array>
+    <string-array name="pref_reduction_card_titles">
+        <item>@string/pref_reduction_card_any</item>
+        <item>Avantage jeune</item>
+        <item>Avantage senior</item>
+        <item>Avantage famille</item>
+    </string-array>
+    <string-array name="pref_update_freq_values">
+        <item>300</item>
+        <item>900</item>
+        <item>1800</item>
+        <item>3600</item>
+        <item>14400</item>
+        <item>28800</item>
+    </string-array>
+    <string-array name="pref_update_freq_titles">
+        <item>5 mn</item>
+        <item>15 mn</item>
+        <item>30 mn</item>
+        <item>1 h</item>
+        <item>4 h</item>
+        <item>8 h</item>
+    </string-array>
+</resources>

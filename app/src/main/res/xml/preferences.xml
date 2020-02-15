@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:key="pref_key_category_1"
+        android:title="@string/menu_preferences" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_run_in_bg"
+            android:summary="@string/pref_run_bg_sum"
+            android:title="@string/pref_run_bg" />
+        <ListPreference
+            android:defaultValue="ANY"
+            android:key="pref_reduction_card"
+            android:title="@string/pref_reduction_card"
+            android:summary="@string/pref_reduction_card_sum"
+            android:entries="@array/pref_reduction_card_titles"
+            android:entryValues="@array/pref_reduction_card_values"/>
+        <ListPreference
+            android:defaultValue="14400"
+            android:key="pref_update_freq"
+            android:title="@string/pref_update_freq"
+            android:summary="@string/pref_update_freq_sum"
+            android:entries="@array/pref_update_freq_titles"
+            android:entryValues="@array/pref_update_freq_values"
+            android:dependency="pref_run_in_bg"/>
+    </PreferenceCategory>
+</PreferenceScreen>
