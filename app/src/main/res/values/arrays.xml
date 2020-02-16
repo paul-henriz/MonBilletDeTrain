@@ -1,15 +1,13 @@
 <resources>
     <string-array name="pref_reduction_card_values">
-        <item>ANY</item>
-        <item>YOUNG_CARD</item>
-        <item>SENIOR_CARD</item>
-        <item>FAMILY_CARD</item>
+        <item>26-NO_CARD</item>
+        <item>12-YOUNG_PASS</item>
+        <item>26-WEEKEND_PASS</item>
     </string-array>
     <string-array name="pref_reduction_card_titles">
         <item>@string/pref_reduction_card_any</item>
-        <item>Avantage jeune</item>
-        <item>Avantage senior</item>
-        <item>Avantage famille</item>
+        <item>Carte Avantage Jeune</item>
+        <item>Carte Avantage Weekend</item>
     </string-array>
     <string-array name="pref_update_freq_values">
         <item>300</item>
