@@ -12,4 +12,7 @@
     <string name="pref_run_bg_sum">Cocher pour vérifier automatiquement en arrière-plan</string>
     <string name="pref_update_freq">Fréquence de rafraichissement</string>
     <string name="pref_update_freq_sum">Sélectionner la période</string>
+    <string name="about_description">Cette application est un projet réalisé dans le cadre de mon cours \"Mobile Development\", sous la direction de Jean-François LALANDE à EFREI Paris</string>
+    <string name="about_copyright">Tous droits réservés - ©Paul-Henri ZIMMERLIN 2020</string>
+    <string name="about_image_description">Logo de l\'école EFREI Paris</string>
 </resources>

@@ -13,4 +13,8 @@
     <string name="pref_update_freq">Update frequency</string>
     <string name="pref_update_freq_sum">Select period to check</string>
     <string name="pref_reduction_card_any">No reduction card</string>
+
+    <string name="about_description">This application is a project done in my course Mobile Development, under the direction of Jean-François LALANDE at EFREI Paris.</string>
+    <string name="about_copyright">All rights reserved - ©Paul-Henri ZIMMERLIN 2020</string>
+    <string name="about_image_description">Logo of the school EFREI Paris</string>
 </resources>

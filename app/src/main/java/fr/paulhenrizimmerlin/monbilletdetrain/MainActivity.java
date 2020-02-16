@@ -39,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             }
+            case R.id.about:
+            {
+                Intent intent = new Intent();
+                intent.setClassName(this, "fr.paulhenrizimmerlin.monbilletdetrain.AboutActivity");
+                startActivity(intent);
+                return true;
+            }
         }
 
         return super.onOptionsItemSelected(item);
