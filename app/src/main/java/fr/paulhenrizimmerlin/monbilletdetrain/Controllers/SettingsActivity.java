@@ -1,10 +1,12 @@
-package fr.paulhenrizimmerlin.monbilletdetrain;
+package fr.paulhenrizimmerlin.monbilletdetrain.Controllers;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
+
+import fr.paulhenrizimmerlin.monbilletdetrain.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

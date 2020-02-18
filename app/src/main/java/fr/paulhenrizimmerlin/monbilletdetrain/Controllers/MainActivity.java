@@ -1,4 +1,4 @@
-package fr.paulhenrizimmerlin.monbilletdetrain;
+package fr.paulhenrizimmerlin.monbilletdetrain.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import fr.paulhenrizimmerlin.monbilletdetrain.R;
 
 import static androidx.preference.PreferenceManager.*;
 
@@ -34,16 +36,12 @@ public class MainActivity extends AppCompatActivity {
         {
             case R.id.preferences:
             {
-                Intent intent = new Intent();
-                intent.setClassName(this, "fr.paulhenrizimmerlin.monbilletdetrain.SettingsActivity");
-                startActivity(intent);
+                startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             }
             case R.id.about:
             {
-                Intent intent = new Intent();
-                intent.setClassName(this, "fr.paulhenrizimmerlin.monbilletdetrain.AboutActivity");
-                startActivity(intent);
+                startActivity(new Intent(this, AboutActivity.class));
                 return true;
             }
         }

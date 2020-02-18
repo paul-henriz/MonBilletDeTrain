@@ -1,8 +1,10 @@
-package fr.paulhenrizimmerlin.monbilletdetrain;
+package fr.paulhenrizimmerlin.monbilletdetrain.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import fr.paulhenrizimmerlin.monbilletdetrain.R;
 
 public class AboutActivity extends AppCompatActivity {
 
