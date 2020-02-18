@@ -1,4 +1,4 @@
-package fr.paulhenrizimmerlin.monbilletdetrain.Controllers;
+package fr.paulhenrizimmerlin.monbilletdetrain.controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Controllers.AboutActivity" android:parentActivityName=".Controllers.MainActivity"/>
-        <activity android:name=".Controllers.MainActivity">
+        <activity android:name=".controllers.AboutActivity" android:parentActivityName=".controllers.MainActivity"/>
+        <activity android:name=".controllers.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,8 +18,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Controllers.SettingsActivity"
-            android:parentActivityName=".Controllers.MainActivity"/>
+            android:name=".controllers.SettingsActivity"
+            android:parentActivityName=".controllers.MainActivity"/>
     </application>
 
 </manifest>
