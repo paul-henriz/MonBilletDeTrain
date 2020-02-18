@@ -1,4 +1,4 @@
-package fr.paulhenrizimmerlin.monbilletdetrain.Controllers;
+package fr.paulhenrizimmerlin.monbilletdetrain.controllers;
 
 import android.os.Bundle;
 
@@ -31,7 +31,7 @@ public class SettingsActivity extends AppCompatActivity {
         return true;
     }
 
-    public static class SettingsFragment extends PreferenceFragmentCompat {
+    static class SettingsFragment extends PreferenceFragmentCompat {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.preferences, rootKey);
