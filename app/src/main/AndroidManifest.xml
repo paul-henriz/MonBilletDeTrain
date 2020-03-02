@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.paulhenrizimmerlin.monbilletdetrain">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controllers.AboutActivity" android:parentActivityName=".controllers.MainActivity"/>
+        <activity
+            android:name=".controllers.AddJourney"
+            android:parentActivityName=".controllers.MainActivity" />
+        <activity
+            android:name=".controllers.AboutActivity"
+            android:parentActivityName=".controllers.MainActivity" />
         <activity android:name=".controllers.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +26,7 @@
         </activity>
         <activity
             android:name=".controllers.SettingsActivity"
-            android:parentActivityName=".controllers.MainActivity"/>
+            android:parentActivityName=".controllers.MainActivity" />
     </application>
 
 </manifest>
