@@ -11,16 +11,24 @@ public class Journey {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    String departure;
-    String arrival;
-    Date date;
-    double currentPrice;
-    double limitPrice;
+    private String departure;
+    private String arrival;
+    private Date date;
+    private double currentPrice;
+    private double limitPrice;
 
     public Journey(String departure, String arrival, Date date) {
         this.departure = departure;
         this.arrival = arrival;
         this.date = date;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDeparture() {
@@ -63,11 +71,11 @@ public class Journey {
         this.limitPrice = limitPrice;
     }
 
-    public void setHours(String hours){
-        Calendar calendar=Calendar.getInstance();
+    public void setHours(String hours) {
+        Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hours.substring(0,2)));
-        calendar.set(Calendar.MINUTE, Integer.parseInt(hours.substring(3,5)));
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hours.substring(0, 2)));
+        calendar.set(Calendar.MINUTE, Integer.parseInt(hours.substring(3, 5)));
         this.date = calendar.getTime();
     }
 

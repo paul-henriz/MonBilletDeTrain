@@ -1,4 +1,4 @@
-package fr.paulhenrizimmerlin.monbilletdetrain.controllers;
+package fr.paulhenrizimmerlin.monbilletdetrain.activities;
 
 import android.os.Bundle;
 

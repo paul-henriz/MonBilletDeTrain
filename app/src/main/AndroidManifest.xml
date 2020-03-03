@@ -13,12 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".controllers.AddJourney"
-            android:parentActivityName=".controllers.MainActivity" />
+            android:name=".activities.ListJourneys"
+            android:parentActivityName=".activities.MainActivity" />
         <activity
-            android:name=".controllers.AboutActivity"
-            android:parentActivityName=".controllers.MainActivity" />
-        <activity android:name=".controllers.MainActivity">
+            android:name=".activities.AddJourney"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.AboutActivity"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,8 +29,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".controllers.SettingsActivity"
-            android:parentActivityName=".controllers.MainActivity" />
+            android:name=".activities.SettingsActivity"
+            android:parentActivityName=".activities.MainActivity" />
 
         <service
             android:name=".controllers.BackgroundTask"

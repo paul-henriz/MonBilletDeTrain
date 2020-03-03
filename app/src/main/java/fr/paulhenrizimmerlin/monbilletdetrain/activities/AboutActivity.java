@@ -1,8 +1,8 @@
-package fr.paulhenrizimmerlin.monbilletdetrain.controllers;
-
-import androidx.appcompat.app.AppCompatActivity;
+package fr.paulhenrizimmerlin.monbilletdetrain.activities;
 
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import fr.paulhenrizimmerlin.monbilletdetrain.R;
 
