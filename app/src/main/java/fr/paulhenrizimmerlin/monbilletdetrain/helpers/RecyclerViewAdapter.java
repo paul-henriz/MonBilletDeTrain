@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import fr.paulhenrizimmerlin.monbilletdetrain.R;
@@ -31,7 +32,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         Journey j = journeys.get(position);
         holder.travel.setText(j.getDeparture() + " - " + j.getArrival());
         holder.price.setText(j.getCurrentPrice() + "(limit: " + j.getLimitPrice() + ")");
-        holder.date.setText(j.getDate().toString());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh'h'mm");
+        holder.date.setText(sdf.format(j.getDate()));
     }
 
     @Override
