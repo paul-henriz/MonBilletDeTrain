@@ -3,6 +3,7 @@
     package="fr.paulhenrizimmerlin.monbilletdetrain">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -27,6 +28,10 @@
         <activity
             android:name=".controllers.SettingsActivity"
             android:parentActivityName=".controllers.MainActivity" />
+
+        <service
+            android:name=".controllers.BackgroundTask"
+            android:process=".checkPriceInBG" />
     </application>
 
 </manifest>
