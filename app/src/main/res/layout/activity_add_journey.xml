@@ -43,7 +43,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:labelFor="@id/departure_label" />
+                android:labelFor="@id/departure_label"
+                android:text="FRPAR" />
         </LinearLayout>
 
         <LinearLayout
@@ -65,7 +66,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:labelFor="@id/arrival_label" />
+                android:labelFor="@id/arrival_label"
+                android:text="FRRNS" />
         </LinearLayout>
 
         <LinearLayout
@@ -129,6 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:hint="40"
                 android:inputType="numberDecimal"
                 android:labelFor="@id/price_label" />
 
