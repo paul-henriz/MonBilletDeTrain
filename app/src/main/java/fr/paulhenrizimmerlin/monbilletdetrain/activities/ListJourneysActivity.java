@@ -15,7 +15,7 @@ import fr.paulhenrizimmerlin.monbilletdetrain.database.AppDatabase;
 import fr.paulhenrizimmerlin.monbilletdetrain.helpers.RecyclerViewAdapter;
 import fr.paulhenrizimmerlin.monbilletdetrain.models.Journey;
 
-public class ListJourneys extends AppCompatActivity {
+public class ListJourneysActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

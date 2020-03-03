@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.ListJourneys"
+            android:name=".activities.ListJourneysActivity"
             android:parentActivityName=".activities.MainActivity" />
         <activity
-            android:name=".activities.AddJourney"
+            android:name=".activities.AddJourneyActivity"
             android:parentActivityName=".activities.MainActivity" />
         <activity
             android:name=".activities.AboutActivity"

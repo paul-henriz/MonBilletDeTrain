@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import fr.paulhenrizimmerlin.monbilletdetrain.R;
 
-public class AddJourney extends AppCompatActivity {
+public class AddJourneyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

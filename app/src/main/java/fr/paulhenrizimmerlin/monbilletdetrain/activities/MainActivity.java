@@ -31,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
         Button addJourney = findViewById(R.id.button_add_journey);
         addJourney.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, AddJourney.class);
+            Intent intent = new Intent(MainActivity.this, AddJourneyActivity.class);
             startActivity(intent);
         });
 
         Button listJourney = findViewById(R.id.button_view_journey);
         listJourney.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ListJourneys.class);
+            Intent intent = new Intent(MainActivity.this, ListJourneysActivity.class);
             startActivity(intent);
         });
 
