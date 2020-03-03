@@ -42,11 +42,15 @@ public class BackgroundTask extends Service {
                         CheckPrice cp = new CheckPrice();
                         cp.execute(j);
                         try {
-                            j = cp.get();
-                            mDb.journeyDao().updateJourney(j);
-                            if (j.getCurrentPrice() < j.getLimitPrice())
-                                Toast.makeText(BackgroundTask.this, "Price: " + j.getCurrentPrice(),
-                                        Toast.LENGTH_SHORT).show();
+                            Journey updated = cp.get();
+                            if (updated != null) {
+                                mDb.journeyDao().updateJourney(updated);
+                                if (updated.getCurrentPrice() < updated.getLimitPrice())
+                                    Toast.makeText(BackgroundTask.this, "Price: " + updated.getCurrentPrice(),
+                                            Toast.LENGTH_SHORT).show();
+                            } else {
+                                mDb.journeyDao().delete(j);
+                            }
                         } catch (ExecutionException | InterruptedException e) {
                             e.printStackTrace();
                         }
