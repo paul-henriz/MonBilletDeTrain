@@ -1,10 +1,7 @@
 package fr.paulhenrizimmerlin.monbilletdetrain.activities;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,8 +9,6 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Objects;
 
 import fr.paulhenrizimmerlin.monbilletdetrain.R;
 import fr.paulhenrizimmerlin.monbilletdetrain.controllers.BackgroundTask;
@@ -86,18 +81,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void createNotificationChannel() {
-        // Créer le NotificationChannel, seulement pour API 26+
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "Notification channel name";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("UPDATE", name, importance);
-            channel.setDescription("Notification channel description");
-            // Enregister le canal sur le système : attention de ne plus rien modifier après
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            Objects.requireNonNull(notificationManager).createNotificationChannel(channel);
-        }
     }
 }

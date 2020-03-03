@@ -1,5 +1,7 @@
 package fr.paulhenrizimmerlin.monbilletdetrain.activities;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
@@ -44,7 +46,7 @@ public class AddJourneyActivity extends AppCompatActivity {
             if (checkIfFilled()) {
                 AppDatabase mDb = getInstance(getApplicationContext());
                 mDb.journeyDao().insertJourney(createJourneyFromUI());
-                BackgroundTask.updateAllPrice(getApplicationContext());
+                BackgroundTask.updateAllPrice(getApplicationContext(), (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE));
                 Toast.makeText(getApplicationContext(), "Journey successfully add", Toast.LENGTH_SHORT).show();
                 finish();
             }

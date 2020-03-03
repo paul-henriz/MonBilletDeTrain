@@ -1,5 +1,7 @@
 package fr.paulhenrizimmerlin.monbilletdetrain.controllers;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +12,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.preference.PreferenceManager;
 
 import java.text.SimpleDateFormat;
@@ -19,6 +22,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 
+import fr.paulhenrizimmerlin.monbilletdetrain.R;
+import fr.paulhenrizimmerlin.monbilletdetrain.activities.ListJourneysActivity;
 import fr.paulhenrizimmerlin.monbilletdetrain.database.AppDatabase;
 import fr.paulhenrizimmerlin.monbilletdetrain.models.Journey;
 
@@ -27,7 +32,7 @@ public class BackgroundTask extends Service {
         return START_STICKY;
     }
 
-    public static void updateAllPrice(Context c) {
+    public static void updateAllPrice(Context c, NotificationManager nManager) {
         AppDatabase mDb = AppDatabase.getInstance(c);
         List<Journey> journeys = mDb.journeyDao().loadAllJourneys();
 
@@ -40,9 +45,22 @@ public class BackgroundTask extends Service {
                 Journey updated = cp.get();
                 if (updated != null && updated.getDate().getTime() > Calendar.getInstance().getTimeInMillis()) {
                     mDb.journeyDao().updateJourney(updated);
-                    if (updated.getCurrentPrice() < updated.getLimitPrice())
+                    if (updated.getCurrentPrice() < updated.getLimitPrice()) {
                         Toast.makeText(c, "Price: " + updated.getCurrentPrice(),
                                 Toast.LENGTH_SHORT).show();
+                        NotificationCompat.Builder builder =
+                                new NotificationCompat.Builder(c)
+                                        .setSmallIcon(R.drawable.ic_launcher_background)
+                                        .setContentTitle("MonBilletDeTrain!")
+                                        .setContentText("Your ticket from " + updated.getDeparture() + " to " + updated.getArrival() + " cost only " + updated.getCurrentPrice() + "€");
+                        int NOTIFICATION_ID = updated.getId();
+
+                        Intent targetIntent = new Intent(c, ListJourneysActivity.class);
+                        PendingIntent contentIntent = PendingIntent.getActivity(c, 0, targetIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        builder.setContentIntent(contentIntent);
+                        nManager.notify(NOTIFICATION_ID, builder.build());
+                    }
+
                 } else {
                     mDb.journeyDao().delete(j);
                 }
@@ -61,7 +79,7 @@ public class BackgroundTask extends Service {
         TimerTask task = new TimerTask() {
             public void run() {
                 handler.post(() -> {
-                    updateAllPrice(getApplicationContext());
+                    updateAllPrice(getApplicationContext(), (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE));
                 });
             }
         };
@@ -70,6 +88,7 @@ public class BackgroundTask extends Service {
         Log.i("PHZ", freq.toString());
         timer.schedule(task, 0, 10 * 1000);
     }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
