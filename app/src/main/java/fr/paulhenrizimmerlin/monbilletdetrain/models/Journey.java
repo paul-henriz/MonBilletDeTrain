@@ -1,6 +1,7 @@
 package fr.paulhenrizimmerlin.monbilletdetrain.models;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.util.Calendar;
@@ -14,13 +15,18 @@ public class Journey {
     private String departure;
     private String arrival;
     private Date date;
-    private double currentPrice;
-    private double limitPrice;
+    private float currentPrice;
+    private float limitPrice;
 
+    @Ignore
     public Journey(String departure, String arrival, Date date) {
         this.departure = departure;
         this.arrival = arrival;
         this.date = date;
+    }
+
+    public Journey() {
+        super();
     }
 
     public int getId() {
@@ -55,19 +61,19 @@ public class Journey {
         this.date = date;
     }
 
-    public double getCurrentPrice() {
+    public float getCurrentPrice() {
         return currentPrice;
     }
 
-    public void setCurrentPrice(double currentPrice) {
+    public void setCurrentPrice(float currentPrice) {
         this.currentPrice = currentPrice;
     }
 
-    public double getLimitPrice() {
+    public float getLimitPrice() {
         return limitPrice;
     }
 
-    public void setLimitPrice(double limitPrice) {
+    public void setLimitPrice(float limitPrice) {
         this.limitPrice = limitPrice;
     }
 

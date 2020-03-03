@@ -30,7 +30,7 @@ public class CheckPrice extends AsyncTask<Journey, Integer, Journey> {
                 String s = readStream(in);
                 try {
                     JSONObject obj = new JSONObject(s.substring(s.indexOf("{"), s.lastIndexOf("}") + 1));
-                    travel.setCurrentPrice(obj.getDouble("price") / 100);
+                    travel.setCurrentPrice(obj.getLong("price") / 100);
                     travel.setHours(obj.getJSONArray("hours").getString(0));
                     return travel;
                 } catch (JSONException e) {
