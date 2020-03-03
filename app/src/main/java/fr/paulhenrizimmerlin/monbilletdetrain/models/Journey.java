@@ -1,9 +1,16 @@
 package fr.paulhenrizimmerlin.monbilletdetrain.models;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.Calendar;
 import java.util.Date;
 
+@Entity(tableName = "journey_table")
 public class Journey {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
     String departure;
     String arrival;
     Date date;
