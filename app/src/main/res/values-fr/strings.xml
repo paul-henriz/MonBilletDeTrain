@@ -15,4 +15,13 @@
     <string name="about_description">Cette application est un projet réalisé dans le cadre de mon cours \"Mobile Development\", sous la direction de Jean-François LALANDE à EFREI Paris</string>
     <string name="about_copyright">Tous droits réservés - ©Paul-Henri ZIMMERLIN 2020</string>
     <string name="about_image_description">Logo de l\'école EFREI Paris</string>
+    <string name="add_journey_title">Ajouter un voyage</string>
+    <string name="add_journey_departure_label">Gare de départ</string>
+    <string name="add_journey_arrival_label">Gare d\'arrivée</string>
+    <string name="add_journey_date_label">Date</string>
+    <string name="add_journey_class_label">Classe</string>
+    <string name="add_journey_price_label">Prix limite</string>
+    <string name="add_journey_button">Ajouter le voyage</string>
+    <string name="first_class">1ère classe</string>
+    <string name="second_class">2ème classe</string>
 </resources>

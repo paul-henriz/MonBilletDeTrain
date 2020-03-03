@@ -6,6 +6,9 @@
     <string name="menu_preferences">Preferences</string>
     <string name="menu_about">About</string>
 
+    <string name="first_class">First class</string>
+    <string name="second_class">Second class</string>
+
     <string name="pref_run_bg">Run in background</string>
     <string name="pref_run_bg_sum">Check to run automatically in background</string>
     <string name="pref_reduction_card">Reduction card</string>
@@ -17,4 +20,12 @@
     <string name="about_description">This application is a project done in my course Mobile Development, under the direction of Jean-François LALANDE at EFREI Paris.</string>
     <string name="about_copyright">All rights reserved - ©Paul-Henri ZIMMERLIN 2020</string>
     <string name="about_image_description">Logo of the school EFREI Paris</string>
+
+    <string name="add_journey_title">Add a journey</string>
+    <string name="add_journey_departure_label">Departure station</string>
+    <string name="add_journey_arrival_label">Arrival station</string>
+    <string name="add_journey_date_label">Date</string>
+    <string name="add_journey_class_label">Class</string>
+    <string name="add_journey_price_label">Limit price</string>
+    <string name="add_journey_button">Add journey</string>
 </resources>

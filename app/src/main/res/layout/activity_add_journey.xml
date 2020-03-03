@@ -19,10 +19,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/title_add_journey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/add_journey_title" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,20 +30,20 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/departure_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="@string/add_journey_departure_label" />
 
             <EditText
-                android:id="@+id/editText"
-                android:layout_width="wrap_content"
+                android:id="@+id/departure_text"
+                android:layout_width="235dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:labelFor="@id/departure_label" />
         </LinearLayout>
 
         <LinearLayout
@@ -52,20 +52,20 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/arrival_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="@string/add_journey_arrival_label" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/arrival_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:labelFor="@id/arrival_label" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,21 +74,71 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/date_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="TextView" />
+                android:text="@string/add_journey_date_label" />
 
             <DatePicker
-                android:id="@+id/editText3"
-                android:layout_width="wrap_content"
+                android:id="@+id/date_selector"
+                android:layout_width="214dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/class_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/add_journey_class_label" />
+
+            <Spinner
+                android:id="@+id/class_selector"
+                android:layout_width="216dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/journey_class_titles"
+                android:entryValues="@array/journey_class_values" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/price_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/add_journey_price_label" />
+
+            <EditText
+                android:id="@+id/price_number"
+                android:layout_width="224dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:labelFor="@id/price_label" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/send_add_journey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_journey_button" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
