@@ -2,17 +2,18 @@ package fr.paulhenrizimmerlin.monbilletdetrain.activities;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 
 import fr.paulhenrizimmerlin.monbilletdetrain.R;
+import fr.paulhenrizimmerlin.monbilletdetrain.controllers.BackgroundTask;
 import fr.paulhenrizimmerlin.monbilletdetrain.database.AppDatabase;
 import fr.paulhenrizimmerlin.monbilletdetrain.models.Journey;
 
@@ -39,14 +40,13 @@ public class AddJourneyActivity extends AppCompatActivity {
         dateInput = findViewById(R.id.date_selector);
 
         Button saveButton = findViewById(R.id.send_add_journey);
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkIfFilled()) {
-                    AppDatabase mDb = getInstance(getApplicationContext());
-                    mDb.journeyDao().insertJourney(createJourneyFromUI());
-                    finish();
-                }
+        saveButton.setOnClickListener(v -> {
+            if (checkIfFilled()) {
+                AppDatabase mDb = getInstance(getApplicationContext());
+                mDb.journeyDao().insertJourney(createJourneyFromUI());
+                BackgroundTask.updateAllPrice(getApplicationContext());
+                Toast.makeText(getApplicationContext(), "Journey successfully add", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }
