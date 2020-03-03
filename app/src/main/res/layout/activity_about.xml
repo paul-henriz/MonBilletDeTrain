@@ -31,7 +31,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/efreiLogoImageView"
         android:layout_width="226dp"
         android:layout_height="wrap_content"
         android:contentDescription="@string/about_image_description"
