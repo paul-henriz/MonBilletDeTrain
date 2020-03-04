@@ -141,7 +141,9 @@
             android:id="@+id/send_add_journey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add_journey_button" />
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/add_journey_button"
+            android:textColor="@color/colorText" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
