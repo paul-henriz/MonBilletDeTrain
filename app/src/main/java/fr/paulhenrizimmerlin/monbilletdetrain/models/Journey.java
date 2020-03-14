@@ -14,9 +14,13 @@ public class Journey {
 
     private String departure;
     private String arrival;
+    private String departureLabel;
+    private String arrivalLabel;
     private Date date;
     private float currentPrice;
     private float limitPrice;
+    private String travelClass;
+    private String reductionCard;
 
     @Ignore
     public Journey(String departure, String arrival, Date date) {
@@ -83,6 +87,38 @@ public class Journey {
         calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hours.substring(0, 2)));
         calendar.set(Calendar.MINUTE, Integer.parseInt(hours.substring(3, 5)));
         this.date = calendar.getTime();
+    }
+
+    public String getDepartureLabel() {
+        return departureLabel;
+    }
+
+    public void setDepartureLabel(String departureLabel) {
+        this.departureLabel = departureLabel;
+    }
+
+    public String getArrivalLabel() {
+        return arrivalLabel;
+    }
+
+    public void setArrivalLabel(String arrivalLabel) {
+        this.arrivalLabel = arrivalLabel;
+    }
+
+    public String getTravelClass() {
+        return travelClass;
+    }
+
+    public void setTravelClass(String travelClass) {
+        this.travelClass = travelClass;
+    }
+
+    public String getReductionCard() {
+        return reductionCard;
+    }
+
+    public void setReductionCard(String reductionCard) {
+        this.reductionCard = reductionCard;
     }
 
     @Override

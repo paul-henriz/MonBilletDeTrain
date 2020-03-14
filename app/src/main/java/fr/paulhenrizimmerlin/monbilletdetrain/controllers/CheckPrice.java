@@ -21,7 +21,7 @@ public class CheckPrice extends AsyncTask<Journey, Integer, Journey> {
         Journey travel = journeys[0];
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            URL url = new URL("https://www.oui.sncf/apim/calendar/train/v4/" + travel.getDeparture() + "/" + travel.getArrival() + "/" + dateFormat.format(travel.getDate()) + "/" + dateFormat.format(travel.getDate()) + "/12-YOUNG/2/fr?extendedToLocality=true&additionalFields=hours");
+            URL url = new URL("https://www.oui.sncf/apim/calendar/train/v4/" + travel.getDeparture() + "/" + travel.getArrival() + "/" + dateFormat.format(travel.getDate()) + "/" + dateFormat.format(travel.getDate()) + "/" + travel.getReductionCard() + "/" + travel.getTravelClass() + "/fr?extendedToLocality=true&additionalFields=hours");
             HttpURLConnection c = (HttpURLConnection) url.openConnection();
             c.setUseCaches(false);
             c.connect();
