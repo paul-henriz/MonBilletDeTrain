@@ -21,6 +21,7 @@ public class CheckPrice extends AsyncTask<Journey, Integer, Journey> {
         Journey travel = journeys[0];
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
+            // We build the URL with all parameters
             URL url = new URL("https://www.oui.sncf/apim/calendar/train/v4/" + travel.getDeparture() + "/" + travel.getArrival() + "/" + dateFormat.format(travel.getDate()) + "/" + dateFormat.format(travel.getDate()) + "/" + travel.getReductionCard() + "/" + travel.getTravelClass() + "/fr?extendedToLocality=true&additionalFields=hours");
             HttpURLConnection c = (HttpURLConnection) url.openConnection();
             c.setUseCaches(false);
@@ -30,6 +31,7 @@ public class CheckPrice extends AsyncTask<Journey, Integer, Journey> {
                 String s = readStream(in);
                 try {
                     JSONObject obj = new JSONObject(s.substring(s.indexOf("{"), s.lastIndexOf("}") + 1));
+                    // We convert the price
                     travel.setCurrentPrice(obj.getLong("price") / 100);
                     travel.setHours(obj.getJSONArray("hours").getString(0));
                     return travel;

@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AutoSuggestAdapter extends ArrayAdapter<String> implements Filterable {
+    // Pair of station and id
+    // e.g: <FRAEJ, Colmar>
     private List<Pair<String, String>> mlistData;
 
     public AutoSuggestAdapter(@NonNull Context context, int resource) {

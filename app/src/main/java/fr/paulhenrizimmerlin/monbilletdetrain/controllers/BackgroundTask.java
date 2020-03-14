@@ -10,7 +10,6 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.preference.PreferenceManager;
@@ -35,15 +34,21 @@ public class BackgroundTask extends Service {
         AppDatabase mDb = AppDatabase.getInstance(c);
         List<Journey> journeys = mDb.journeyDao().loadAllJourneys();
 
+        // For each entry in the database
         for (Journey j : journeys) {
+            // Start the async task
             CheckPrice cp = new CheckPrice();
             cp.execute(j);
             try {
                 Journey updated = cp.get();
+                // If the travel is valid and not in the past
                 if (updated != null && updated.getDate().getTime() > Calendar.getInstance().getTimeInMillis()) {
+                    // Update the database with the new price
                     mDb.journeyDao().updateJourney(updated);
+                    // if the price is below the limit
                     if (updated.getCurrentPrice() < updated.getLimitPrice()) {
-                        Toast.makeText(c, "Price: " + updated.getCurrentPrice(), Toast.LENGTH_SHORT).show();
+                        /*Toast.makeText(c, "Price: " + updated.getCurrentPrice(), Toast.LENGTH_SHORT).show();*/
+                        // We send a notification
                         Notification.Builder builder = null;
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                             builder =
@@ -69,6 +74,7 @@ public class BackgroundTask extends Service {
                     }
 
                 } else {
+                    // We delete from the db and next check if not valid or in the past
                     mDb.journeyDao().delete(j);
                 }
             } catch (ExecutionException | InterruptedException e) {
@@ -78,6 +84,7 @@ public class BackgroundTask extends Service {
     }
 
     public void onCreate() {
+        // We create the scheduled task with the preference of the user
         Timer timer = new Timer();
         final Handler handler = new Handler();
         TimerTask task = new TimerTask() {

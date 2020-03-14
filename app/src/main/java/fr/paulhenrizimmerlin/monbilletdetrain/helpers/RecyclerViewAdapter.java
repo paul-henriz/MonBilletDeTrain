@@ -31,7 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Journey j = journeys.get(position);
         holder.travel.setText(j.getDepartureLabel() + " - " + j.getArrivalLabel());
-        holder.price.setText(j.getCurrentPrice() + "(limit: " + j.getLimitPrice() + ")");
+        holder.price.setText(j.getCurrentPrice() + "(max: " + j.getLimitPrice() + ")");
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh'h'mm");
         holder.date.setText(sdf.format(j.getDate()));
     }

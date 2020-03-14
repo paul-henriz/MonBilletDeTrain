@@ -22,8 +22,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // If necessary, set default preferences
         setDefaultValues(this, R.xml.preferences, false);
 
+        // Link buttons with activities
         Button addJourney = findViewById(R.id.button_add_journey);
         addJourney.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AddJourneyActivity.class);
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Check if user enabled service. If not started, start it
         SharedPreferences spf = getDefaultSharedPreferences(this);
         Boolean bg = spf.getBoolean("pref_run_in_bg", false);
 
@@ -52,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    // "Three dots" menu in the top right corner
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

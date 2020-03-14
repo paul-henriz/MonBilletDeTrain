@@ -10,11 +10,11 @@ import com.android.volley.toolbox.Volley;
 
 public class GetStation {
     private static GetStation mInstance;
-    private static Context mCtx;
+    private static Context mContext;
     private RequestQueue mRequestQueue;
 
-    public GetStation(Context ctx) {
-        mCtx = ctx;
+    public GetStation(Context c) {
+        mContext = c;
         mRequestQueue = getRequestQueue();
     }
 
@@ -27,7 +27,10 @@ public class GetStation {
 
     public static void make(Context ctx, String query, Response.Listener<String>
             listener, Response.ErrorListener errorListener) {
+        // API from oui.sncf to convert station name to intern id
+        // e.g: Colmar => FRAEJ
         String url = "https://www.oui.sncf/booking/autocomplete-d2d?uc=fr-FR&searchField=origin&searchTerm=" + query;
+        // Using Volley request queue
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 listener, errorListener);
         GetStation.getInstance(ctx).addToRequestQueue(stringRequest);
@@ -35,7 +38,7 @@ public class GetStation {
 
     public RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
-            mRequestQueue = Volley.newRequestQueue(mCtx.getApplicationContext());
+            mRequestQueue = Volley.newRequestQueue(mContext.getApplicationContext());
         }
         return mRequestQueue;
     }

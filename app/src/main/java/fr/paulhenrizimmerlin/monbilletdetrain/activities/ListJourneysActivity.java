@@ -28,9 +28,11 @@ public class ListJourneysActivity extends AppCompatActivity {
 
         mRecyclerView = findViewById(R.id.journey_list);
 
+        // Load everything from the database
         AppDatabase mDb = AppDatabase.getInstance(getApplicationContext());
         journeys = mDb.journeyDao().loadAllJourneys();
 
+        // Fill the adapter with data
         mAdapter = new RecyclerViewAdapter(journeys);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);

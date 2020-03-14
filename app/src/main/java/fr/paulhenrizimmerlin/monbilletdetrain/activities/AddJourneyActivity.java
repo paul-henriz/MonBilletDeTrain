@@ -43,18 +43,20 @@ import static fr.paulhenrizimmerlin.monbilletdetrain.database.AppDatabase.getIns
 public class AddJourneyActivity extends AppCompatActivity {
     private static final int TRIGGER_AUTO_COMPLETE = 100;
     private static final long AUTO_COMPLETE_DELAY = 300;
+
+    // UI Elements
     EditText priceInput;
     AutoCompleteTextView departureInput;
-
+    AutoCompleteTextView arrivalInput;
     Spinner travelClassInput;
     DatePicker dateInput;
-    AutoCompleteTextView arrivalInput;
     Button saveButton;
+
+    // Autocompletion
     String departureId;
     String arrivalId;
     private Handler handlerDeparture;
     private AutoSuggestAdapter autoSuggestAdapterDeparture;
-
     private Handler handlerArrival;
     private AutoSuggestAdapter autoSuggestAdapterArrival;
 
@@ -63,6 +65,7 @@ public class AddJourneyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_journey);
 
+        // We instantiate UI elements
         departureInput = findViewById(R.id.departure_text);
         arrivalInput = findViewById(R.id.arrival_text);
         priceInput = findViewById(R.id.price_number);
@@ -70,7 +73,7 @@ public class AddJourneyActivity extends AppCompatActivity {
         travelClassInput = findViewById(R.id.class_selector);
         dateInput = findViewById(R.id.date_selector);
 
-        //Setting up the adapter for AutoSuggest
+        //Setting up the adapter for departure autosuggest
         autoSuggestAdapterDeparture = new AutoSuggestAdapter(this,
                 android.R.layout.simple_dropdown_item_1line);
         departureInput.setThreshold(2);
@@ -113,6 +116,7 @@ public class AddJourneyActivity extends AppCompatActivity {
             }
         });
 
+        //Setting up the adapter for arrival autosuggest
         autoSuggestAdapterArrival = new AutoSuggestAdapter(this,
                 android.R.layout.simple_dropdown_item_1line);
         arrivalInput.setThreshold(2);
@@ -155,6 +159,7 @@ public class AddJourneyActivity extends AppCompatActivity {
             }
         });
 
+        // Save button action (insert into DB + update price + send toast)
         saveButton = findViewById(R.id.send_add_journey);
         saveButton.setOnClickListener(v -> {
             if (checkIfFilled()) {
@@ -168,9 +173,11 @@ public class AddJourneyActivity extends AppCompatActivity {
     }
 
     private Journey createJourneyFromUI() {
+        // We retrieve the reduction card from preferences
         SharedPreferences pfs = PreferenceManager.getDefaultSharedPreferences(this);
         String reductionCard = pfs.getString("pref_reduction_card", "26-NO_CARD");
 
+        // We format date
         int day = dateInput.getDayOfMonth();
         int month = dateInput.getMonth();
         int year = dateInput.getYear();
@@ -179,6 +186,8 @@ public class AddJourneyActivity extends AppCompatActivity {
         calendar.set(year, month, day);
 
         Journey current = new Journey();
+
+        // We fill the journey with information from the form
         current.setLimitPrice(Float.parseFloat(priceInput.getText().toString()));
         current.setDeparture(departureId);
         current.setArrival(arrivalId);
@@ -191,6 +200,7 @@ public class AddJourneyActivity extends AppCompatActivity {
         return current;
     }
 
+    // Check if all mandatory field are set
     private Boolean checkIfFilled() {
         if (departureId == null) {
             departureInput.setError(getResources().getString(R.string.add_journey_warning_departure));
@@ -207,6 +217,7 @@ public class AddJourneyActivity extends AppCompatActivity {
         return true;
     }
 
+    // Call the api for station name suggestion
     private void makeApiCall(String text, AutoSuggestAdapter adapter) {
         GetStation.make(this, text, new Response.Listener<String>() {
             @Override

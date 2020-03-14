@@ -12,10 +12,18 @@ public class Journey {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+    // e.g: FRAEJ
     private String departure;
+
+    // e.g: FRPAR
     private String arrival;
+
+    // e.g: Colmar
     private String departureLabel;
+
+    // e.g: Paris
     private String arrivalLabel;
+
     private Date date;
     private float currentPrice;
     private float limitPrice;
