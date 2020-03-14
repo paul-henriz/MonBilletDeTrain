@@ -36,15 +36,14 @@
                 android:layout_weight="1"
                 android:text="@string/add_journey_departure_label" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/departure_text"
                 android:layout_width="235dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:labelFor="@id/departure_label"
-                android:text="FRPAR" />
+                android:inputType="text"
+                android:labelFor="@id/departure_label" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,15 +58,14 @@
                 android:layout_weight="1"
                 android:text="@string/add_journey_arrival_label" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/arrival_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:labelFor="@id/arrival_label"
-                android:text="FRRNS" />
+                android:labelFor="@id/arrival_label" />
         </LinearLayout>
 
         <LinearLayout
