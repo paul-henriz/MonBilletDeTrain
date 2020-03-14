@@ -1,6 +1,7 @@
 package fr.paulhenrizimmerlin.monbilletdetrain.controllers;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -57,6 +58,8 @@ public class BackgroundTask extends Service {
                                             .setContentTitle(c.getResources().getString(R.string.app_name))
                                             .setChannelId(c.getResources().getString(R.string.app_name))
                                             .setStyle(new Notification.BigTextStyle().bigText(c.getResources().getString(R.string.notification_your_ticket) + " " + updated.getDepartureLabel() + " - " + updated.getArrivalLabel() + " " + c.getResources().getString(R.string.notification_cost_only) + " " + updated.getCurrentPrice() + "€"));
+                            NotificationChannel channel = new NotificationChannel(c.getResources().getString(R.string.app_name), c.getResources().getString(R.string.app_name), NotificationManager.IMPORTANCE_DEFAULT);
+                            nManager.createNotificationChannel(channel);
                         } else {
                             builder =
                                     new Notification.Builder(c)

@@ -43,7 +43,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="text"
-                android:hint="@id/departure_label" />
+                android:hint="Colmar" />
         </LinearLayout>
 
         <LinearLayout
@@ -65,7 +65,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:hint="@id/arrival_label" />
+                android:hint="Paris" />
         </LinearLayout>
 
         <LinearLayout
