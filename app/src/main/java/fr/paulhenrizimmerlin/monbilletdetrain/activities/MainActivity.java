@@ -43,21 +43,6 @@ public class MainActivity extends AppCompatActivity {
             Intent serviceIntent = new Intent(this, BackgroundTask.class);
             startService(serviceIntent);
         }
-
-        // Populate database
-        /* AppDatabase mDb = AppDatabase.getInstance(getApplicationContext());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        mDb.journeyDao().deleteAll();
-        try {
-            Journey j = new Journey("FRAEJ", "FRPAR", dateFormat.parse("2020-03-20"));
-            j.setLimitPrice(40);
-            mDb.journeyDao().insertJourney(j);
-            j = new Journey("FRAEJ", "FRPAR", dateFormat.parse("2020-03-22"));
-            j.setLimitPrice(80);
-            mDb.journeyDao().insertJourney(j);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }*/
     }
 
     @Override
