@@ -10,7 +10,7 @@
             android:summary="@string/pref_run_bg_sum"
             android:title="@string/pref_run_bg" />
         <ListPreference
-            android:defaultValue="ANY"
+            android:defaultValue="26-NO_CARD"
             android:key="pref_reduction_card"
             android:title="@string/pref_reduction_card"
             android:summary="@string/pref_reduction_card_sum"
