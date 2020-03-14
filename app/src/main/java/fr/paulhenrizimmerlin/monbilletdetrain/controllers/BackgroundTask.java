@@ -7,14 +7,14 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
-import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.preference.PreferenceManager;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
@@ -35,8 +35,6 @@ public class BackgroundTask extends Service {
         AppDatabase mDb = AppDatabase.getInstance(c);
         List<Journey> journeys = mDb.journeyDao().loadAllJourneys();
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
         for (Journey j : journeys) {
             CheckPrice cp = new CheckPrice();
             cp.execute(j);
@@ -45,12 +43,23 @@ public class BackgroundTask extends Service {
                 if (updated != null && updated.getDate().getTime() > Calendar.getInstance().getTimeInMillis()) {
                     mDb.journeyDao().updateJourney(updated);
                     if (updated.getCurrentPrice() < updated.getLimitPrice()) {
-                        //Toast.makeText(c, "Price: " + updated.getCurrentPrice(), Toast.LENGTH_SHORT).show();
-                        Notification.Builder builder =
-                                new Notification.Builder(c)
-                                        .setSmallIcon(R.mipmap.ic_launcher_foreground)
-                                        .setContentTitle(c.getResources().getString(R.string.app_name))
-                                        .setStyle(new Notification.BigTextStyle().bigText(c.getResources().getString(R.string.notification_your_ticket) + " " + updated.getDepartureLabel() + " - " + updated.getArrivalLabel() + " " + c.getResources().getString(R.string.notification_cost_only) + " " + updated.getCurrentPrice() + "€"));
+                        Toast.makeText(c, "Price: " + updated.getCurrentPrice(), Toast.LENGTH_SHORT).show();
+                        Notification.Builder builder = null;
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            builder =
+                                    new Notification.Builder(c)
+                                            .setSmallIcon(R.mipmap.ic_launcher_foreground)
+                                            .setContentTitle(c.getResources().getString(R.string.app_name))
+                                            .setChannelId(c.getResources().getString(R.string.app_name))
+                                            .setStyle(new Notification.BigTextStyle().bigText(c.getResources().getString(R.string.notification_your_ticket) + " " + updated.getDepartureLabel() + " - " + updated.getArrivalLabel() + " " + c.getResources().getString(R.string.notification_cost_only) + " " + updated.getCurrentPrice() + "€"));
+                        } else {
+                            builder =
+                                    new Notification.Builder(c)
+                                            .setSmallIcon(R.mipmap.ic_launcher_foreground)
+                                            .setContentTitle(c.getResources().getString(R.string.app_name))
+                                            .setStyle(new Notification.BigTextStyle().bigText(c.getResources().getString(R.string.notification_your_ticket) + " " + updated.getDepartureLabel() + " - " + updated.getArrivalLabel() + " " + c.getResources().getString(R.string.notification_cost_only) + " " + updated.getCurrentPrice() + "€"));
+
+                        }
                         int NOTIFICATION_ID = updated.getId();
 
                         Intent targetIntent = new Intent(c, ListJourneysActivity.class);
@@ -66,7 +75,6 @@ public class BackgroundTask extends Service {
                 e.printStackTrace();
             }
         }
-        Log.i("PHZ", mDb.journeyDao().loadAllJourneys().toString());
     }
 
     public void onCreate() {
@@ -81,7 +89,7 @@ public class BackgroundTask extends Service {
         };
         SharedPreferences pfs = PreferenceManager.getDefaultSharedPreferences(this);
         Integer freq = Integer.parseInt(pfs.getString("pref_update_freq", "14400"));
-        timer.schedule(task, 0, 10 * 1000);
+        timer.schedule(task, 0, freq * 1000);
     }
 
     @Nullable

@@ -1,7 +1,6 @@
 package fr.paulhenrizimmerlin.monbilletdetrain.database;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.room.Database;
 import androidx.room.Room;
@@ -22,13 +21,11 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getInstance(Context context) {
         if (sInstance == null) {
             synchronized (LOCK) {
-                Log.d(LOG_TAG, "Creating new database instance");
                 sInstance = Room.databaseBuilder(context.getApplicationContext(),
                         AppDatabase.class, AppDatabase.DATABASE_NAME).allowMainThreadQueries()
                         .build();
             }
         }
-        Log.d(LOG_TAG, "Getting the database instance");
         return sInstance;
     }
 
