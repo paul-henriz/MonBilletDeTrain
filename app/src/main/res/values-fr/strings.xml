@@ -24,4 +24,10 @@
     <string name="add_journey_button">Ajouter le voyage</string>
     <string name="first_class">1ère classe</string>
     <string name="second_class">2ème classe</string>
+    <string name="add_journey_warning_departure">La gare de départ est requise</string>
+    <string name="add_journey_warning_arrival">La gare d\'arrivée est requise</string>
+    <string name="add_journey_warning_limit">Le prix limite est requis</string>
+    <string name="add_journey_success_added">Le voyage a été ajouté avec succès</string>
+    <string name="notification_your_ticket">Votre billet</string>
+    <string name="notification_cost_only">coûte seulement</string>
 </resources>

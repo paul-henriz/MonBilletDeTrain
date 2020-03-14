@@ -1,5 +1,6 @@
 package fr.paulhenrizimmerlin.monbilletdetrain.controllers;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -9,10 +10,8 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.core.app.NotificationCompat;
 import androidx.preference.PreferenceManager;
 
 import java.text.SimpleDateFormat;
@@ -46,13 +45,12 @@ public class BackgroundTask extends Service {
                 if (updated != null && updated.getDate().getTime() > Calendar.getInstance().getTimeInMillis()) {
                     mDb.journeyDao().updateJourney(updated);
                     if (updated.getCurrentPrice() < updated.getLimitPrice()) {
-                        Toast.makeText(c, "Price: " + updated.getCurrentPrice(),
-                                Toast.LENGTH_SHORT).show();
-                        NotificationCompat.Builder builder =
-                                new NotificationCompat.Builder(c)
-                                        .setSmallIcon(R.drawable.ic_launcher_background)
-                                        .setContentTitle("MonBilletDeTrain!")
-                                        .setContentText("Your ticket from " + updated.getDeparture() + " to " + updated.getArrival() + " cost only " + updated.getCurrentPrice() + "€");
+                        //Toast.makeText(c, "Price: " + updated.getCurrentPrice(), Toast.LENGTH_SHORT).show();
+                        Notification.Builder builder =
+                                new Notification.Builder(c)
+                                        .setSmallIcon(R.mipmap.ic_launcher_foreground)
+                                        .setContentTitle(c.getResources().getString(R.string.app_name))
+                                        .setStyle(new Notification.BigTextStyle().bigText(c.getResources().getString(R.string.notification_your_ticket) + " " + updated.getDepartureLabel() + " - " + updated.getArrivalLabel() + " " + c.getResources().getString(R.string.notification_cost_only) + " " + updated.getCurrentPrice() + "€"));
                         int NOTIFICATION_ID = updated.getId();
 
                         Intent targetIntent = new Intent(c, ListJourneysActivity.class);
@@ -73,8 +71,6 @@ public class BackgroundTask extends Service {
 
     public void onCreate() {
         Timer timer = new Timer();
-        Toast.makeText(this, "Démarrage du service", Toast.LENGTH_SHORT).show();
-
         final Handler handler = new Handler();
         TimerTask task = new TimerTask() {
             public void run() {
@@ -85,7 +81,6 @@ public class BackgroundTask extends Service {
         };
         SharedPreferences pfs = PreferenceManager.getDefaultSharedPreferences(this);
         Integer freq = Integer.parseInt(pfs.getString("pref_update_freq", "14400"));
-        Log.i("PHZ", freq.toString());
         timer.schedule(task, 0, 10 * 1000);
     }
 

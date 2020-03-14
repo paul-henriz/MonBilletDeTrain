@@ -28,4 +28,11 @@
     <string name="add_journey_class_label">Class</string>
     <string name="add_journey_price_label">Limit price</string>
     <string name="add_journey_button">Add journey</string>
+    <string name="add_journey_warning_departure">Departure station is required</string>
+    <string name="add_journey_warning_arrival">Arrival station is required</string>
+    <string name="add_journey_warning_limit">Limit price is required</string>
+    <string name="add_journey_success_added">Journey successfully added</string>
+
+    <string name="notification_your_ticket">Your ticket</string>
+    <string name="notification_cost_only">cost only</string>
 </resources>
